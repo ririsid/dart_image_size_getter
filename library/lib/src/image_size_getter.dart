@@ -66,7 +66,8 @@ class ImageSizGetter {
     final sizeStart = utils.getRangeSync(0, 6);
     final sizeEnd = utils.getRangeSync(length - 1, length);
 
-    return eq.equals(sizeStart, _GifHeaders.start) &&
+    return (eq.equals(sizeStart, _GifHeaders.start87a) ||
+            eq.equals(sizeStart, _GifHeaders.start89a)) &&
         eq.equals(sizeEnd, _GifHeaders.end);
   }
 
@@ -132,7 +133,16 @@ class _WebpHeaders {
 }
 
 class _GifHeaders {
-  static const start = [
+  static const start87a = [
+    0x47,
+    0x49,
+    0x46,
+    0x38,
+    0x37,
+    0x61,
+  ];
+
+  static const start89a = [
     0x47,
     0x49,
     0x46,
